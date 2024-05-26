@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
 	bool canShoot = true;
 
 	public bool isActive = false;
-
+	
 	void Start()
 	{
 		direction = (transform.localRotation * Vector2.up).normalized;

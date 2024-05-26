@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletEnemy : MonoBehaviour
 {
 	public Vector2 direction = new Vector2(0, 1);
 	public float speed;
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector2 pos = transform.position;
-		pos += velocity * Time.fixedDeltaTime;
+		pos -= velocity * Time.fixedDeltaTime;
 
 		
 		transform.position = pos;
