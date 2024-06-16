@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class BulletEnemy : MonoBehaviour
 {
-	public Vector2 direction = new Vector2(0, 1);
+    
+    public Vector2 direction = new Vector2(0, 1);
 	public float speed;
 	public Vector2 velocity;
-	
-	
-	void Start()
+	public float timeDestroy;
+
+    void Start()
 	{
-		
-		Destroy(gameObject, 4);
+		if (timeDestroy == 0 || timeDestroy == null)
+		{
+			timeDestroy = 4;
+		}
+        Destroy(gameObject, 4);
 		//DontDestroyOnLoad(gameObject);
 	}
 
@@ -24,10 +28,10 @@ public class BulletEnemy : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector2 pos = transform.position;
-		pos -= velocity * Time.fixedDeltaTime;
+        pos -= velocity * Time.fixedDeltaTime;
 
-		
-		transform.position = pos;
+
+        transform.position = pos;
 
 	}
 	//Destroy if go out camera

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyMoveDown : MonoBehaviour
 {
 	public float speed;
 	private Camera mainCamera;
 	private float destroyYPosition;
 	public float offsetDestroy = 1f;
+    public bool isActive = true;
 
-	void Start()
+    void Start()
 	{
 		mainCamera = Camera.main;
 		destroyYPosition = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane)).y -offsetDestroy;
@@ -17,7 +18,8 @@ public class EnemyMove : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Vector2 pos = transform.position;
+        if (!isActive) return;
+        Vector2 pos = transform.position;
 		pos.y -= speed * Time.fixedDeltaTime;
 
 		transform.position = pos;
